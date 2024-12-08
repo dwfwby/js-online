@@ -88,8 +88,7 @@
             })
 
             textarea.addEventListener("input", (e) => {
-                document.cookie = `save=${textarea.value}`;
-                localStorage.setItem('save', textarea.value);
+                save();
             })
             
             button.onclick = () => {
@@ -101,11 +100,21 @@
                 }
             };
 
+            function save(){
+                document.cookie = `save=${textarea.value}`;
+                localStorage.setItem('save', textarea.value);
+            }
+
             button_import.onclick = function(){
                 const link = prompt("Link for import \n\nExample: https://raw.githubusercontent.com/dwfwby/js-online/refs/heads/main/index.html");
 
-                if(link)
-                    fetch(link).then(async r => textarea.value = await r.text())
+                if(!link)
+                    return
+                
+                fetch(link).then(async function(){
+                    textarea.value = await r.text();
+                    save();
+                })
             }
         })
     </script>
