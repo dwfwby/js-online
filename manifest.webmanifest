@@ -1,0 +1,17 @@
+  {
+    "name": "JS-Online",
+    "short_name": "JSO",
+    "description": "Eval js on your phone",
+    "scope": "/js-online/",
+    "start_url": "/js-online/",
+    "background_color": "#ffffff",
+    "theme_color": "#ffffff",
+    "display": "standalone", 
+    "icons": [
+        {
+          "src": "/js-online/favicon.png",
+          "type": "image/png",
+          "sizes": "144x144"
+        }
+    ]
+  }
