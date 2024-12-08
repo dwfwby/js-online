@@ -1,6 +1,6 @@
   {
     "name": "JS-Online",
-    "short_name": "JSO",
+    "short_name": "JS",
     "description": "Eval js on your phone",
     "scope": "/js-online/",
     "start_url": "/js-online/",

@@ -1,5 +1,5 @@
 var GHPATH = '/js-online';
-var APP_PREFIX = 'jso_';
+var APP_PREFIX = 'js_';
 var VERSION = 'version_00';
 var URLS = [    
   `${GHPATH}/`,
