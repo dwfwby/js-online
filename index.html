@@ -45,8 +45,16 @@
     <script>
         document.addEventListener("DOMContentLoaded", () => {
             const height = window.innerHeight;
-            
-            textarea.value = localStorage.getItem("save");
+
+            textarea.value = getCookieValue("save") || localStorage.getItem("save") || "";
+
+            function getCookieValue(name){
+                const regexp = new RegExp(`(^| )${name}=([^;]+)`)
+                const match = document.cookie.match(regexp)
+                if (match) {
+                    return match[2]
+                }
+            }
 
             function isComputer(){
                 const userAgent = navigator.userAgent.toLowerCase();
@@ -64,6 +72,7 @@
             })
 
             textarea.addEventListener("input", (e) => {
+                document.cookie = `save=${textarea.value}`;
                 localStorage.setItem('save', textarea.value);
             })
             
