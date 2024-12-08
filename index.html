@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Eval js</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body{
+            position: relative;
+            padding: 16px 16px 70px;
+        }
+        textarea{
+            padding: 2px;
+            min-height: 250px;
+            width: 100%;
+            max-width: 100%;
+        }
+        textarea:focus{
+            outline: none;
+        }
+        button{
+            width: 250px;
+            height: 50px;
+            margin-top: 10px;
+            background-color: #145612;
+            border-radius: 4px;
+            outline: none;
+            border: none;
+            color: #fff;
+            cursor: pointer;
+            position: fixed;
+            bottom: 10px;
+            left: 10px;
+        }
+    </style>
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            let cursor = 0;
+
+            const resizeEvent = function(e){
+                const isBigger = cursor.pageY > window.innerHeight / 0.66;
+                const isSmaller = cursor.pageY < window.innerHeight / 0.33;
+                
+                if(isBigger)
+                    window.scroll(0, cursor.screenY)
+                else if(isSmaller)
+                    window.scroll(0, cursor.screenY)
+            }
+
+            document.addEventListener("mousemove", e => cursor = e)
+
+            new ResizeObserver(resizeEvent).observe(textarea)
+
+            button.onclick = () => {
+                try {
+                    eval(textarea.value)
+                } catch (error) {
+                    alert(error);
+                }
+            };
+        })
+    </script>
+</head>
+<body>
+    <textarea id="textarea"></textarea>
+    <button id="button">Выполнить</button>
+</body>
+</html>
