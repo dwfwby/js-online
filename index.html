@@ -44,7 +44,25 @@
     </style>
     <script>
         document.addEventListener("DOMContentLoaded", () => {
+            function isComputer(){
+                const userAgent = navigator.userAgent.toLowerCase();
+
+                return userAgent.includes("windows") || userAgent.includes("macintosh") || userAgent.includes("linux")
+            }
+            textarea.addEventListener("focusin", (e) => {
+                if(typeof unfocus == "undefined" && !isComputer()){
+                    const btn = document.createElement("button")
+                    btn.id = "unfocus";
+                    btn.innerHTML = "▼"
+                    btn.style.bottom = `${window.innerHeight + 10}px`
+                    document.body.appendChild(btn)
+                }
+            })
+            textarea.addEventListener("focusout", (e) => {
+                unfocus?.remove();
+            })
             button.onclick = () => {
+                textarea.blur();
                 try {
                     eval(textarea.value)
                 } catch (error) {
