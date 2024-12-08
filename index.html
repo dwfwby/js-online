@@ -111,7 +111,7 @@
                 if(!link)
                     return
                 
-                fetch(link).then(async function(){
+                fetch(link).then(async function(r){
                     textarea.value = await r.text();
                     save();
                 })
