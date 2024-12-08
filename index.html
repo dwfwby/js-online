@@ -44,11 +44,21 @@
     </style>
     <script>
         document.addEventListener("DOMContentLoaded", () => {
+            const height = window.innerHeight;
             function isComputer(){
                 const userAgent = navigator.userAgent.toLowerCase();
 
                 return userAgent.includes("windows") || userAgent.includes("macintosh") || userAgent.includes("linux")
             }
+
+            textarea.addEventListener("focusin", (e) => {
+                if(!isComputer())
+                    button.bottom = `${height - window.innerHeight + 10}px`;
+            })
+
+            textarea.addEventListener("focusout", (e) => {
+                button.bottom = "10px";
+            })
             
             button.onclick = () => {
                 textarea.blur();
