@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="/js-online/favicon.png" type="image/x-icon">
+    <link rel="manifest" href="/js-online/manifest.webmanifest">
+    <title>Eval js</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        html, body{
+            height: 100%;
+        }
+        body{
+            position: relative;
+            padding: 16px 16px 70px;
+        }
+        textarea{
+            padding: 2px;
+            height: 98%;
+            width: 100%;
+            max-width: 100%;
+            font-size: 16px;
+        }
+        textarea:focus{
+            outline: none;
+        }
+        button{
+            width: 250px;
+            height: 50px;
+            margin-top: 10px;
+            background-color: #145612;
+            border-radius: 4px;
+            outline: none;
+            border: none;
+            color: #fff;
+            cursor: pointer;
+            position: fixed;
+            bottom: 10px;
+            left: 10px;
+        }
+    </style>
+    <script>
+        if (navigator.serviceWorker) {
+            try {
+                navigator.serviceWorker.register (
+                '/js-online/sw.js',
+                {scope: '/js-online/'}
+            )
+            } catch (error) {
+                
+            }
+        }
+
+        document.addEventListener("DOMContentLoaded", () => {
+            const height = window.innerHeight;
+
+            textarea.value = getCookieValue("save") || localStorage.getItem("save") || "";
+
+            function getCookieValue(name){
+                const regexp = new RegExp(`(^| )${name}=([^;]+)`)
+                const match = document.cookie.match(regexp)
+                if (match) {
+                    return match[2]
+                }
+            }
+
+            function isComputer(){
+                const userAgent = navigator.userAgent.toLowerCase();
+
+                return userAgent.includes("windows") || userAgent.includes("macintosh") || userAgent.includes("linux")
+            }
+
+            textarea.addEventListener("focusin", (e) => {
+                if(!isComputer())
+                    button.bottom = `${height - window.innerHeight + 10}px`;
+            })
+
+            textarea.addEventListener("focusout", (e) => {
+                button.bottom = "10px";
+            })
+
+            textarea.addEventListener("input", (e) => {
+                document.cookie = `save=${textarea.value}`;
+                localStorage.setItem('save', textarea.value);
+            })
+            
+            button.onclick = () => {
+                textarea.blur();
+                try {
+                    eval(textarea.value)
+                } catch (error) {
+                    alert(error);
+                }
+            };
+        })
+    </script>
+</head>
+<body>
+    <textarea id="textarea" spellcheck="false"></textarea>
+    <button id="button">Execute</button>
+</body>
+</html>
