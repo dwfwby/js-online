@@ -1,6 +1,6 @@
 var GHPATH = '/js-online';
 var APP_PREFIX = 'js_';
-var VERSION = 'version_00';
+var VERSION = 'version_001';
 var URLS = [    
   `${GHPATH}/`,
   `${GHPATH}/index.html`,
