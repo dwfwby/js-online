@@ -1,7 +1,7 @@
   {
-    "name": "JS-Online",
-    "short_name": "JS",
-    "description": "Eval js on your phone",
+    "name": "JS Executor where hasn't dev tools",
+    "short_name": "JS Executor",
+    "description": "Execute js on your phone",
     "scope": "/js-online/",
     "start_url": "/js-online/",
     "background_color": "#ffffff",
