@@ -13,16 +13,13 @@
             padding: 0;
             box-sizing: border-box;
         }
-        html, body{
-            height: 100%;
-        }
         body{
             position: relative;
             padding: 16px 16px 70px;
         }
         textarea{
             padding: 2px;
-            height: 98%;
+            height: calc(100vh - 32px);
             width: 100%;
             max-width: 100%;
             font-size: 16px;
@@ -42,7 +39,13 @@
             cursor: pointer;
             position: fixed;
             bottom: 10px;
-            left: 10px;
+            left: 16px;
+        }
+        #button_import{
+            right: 16px;
+            width: 50px;
+            left: auto;
+            background-color: rebeccapurple;
         }
     </style>
     <script>
@@ -94,11 +97,19 @@
                     alert(error);
                 }
             };
+
+            button_import.onclick = function(){
+                const link = prompt("Link for import \n\nExample: https://raw.githubusercontent.com/dwfwby/js-online/refs/heads/main/index.html");
+
+                fetch(link)
+                .then(async r => textarea.value = await r.text())
+            }
         })
     </script>
 </head>
 <body>
     <textarea id="textarea" autocorrect="off" spellcheck="false"></textarea>
     <button id="button">Execute</button>
+    <button id="button_import"><img src="/js-online/import.svg"></button>
 </body>
 </html>
