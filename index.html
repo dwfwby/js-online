@@ -10,15 +10,19 @@
             padding: 0;
             box-sizing: border-box;
         }
+        html, body{
+            height: 100%;
+        }
         body{
             position: relative;
             padding: 16px 16px 70px;
         }
         textarea{
             padding: 2px;
-            min-height: 250px;
+            height: 98%;
             width: 100%;
             max-width: 100%;
+            font-size: 16px;
         }
         textarea:focus{
             outline: none;
@@ -40,22 +44,6 @@
     </style>
     <script>
         document.addEventListener("DOMContentLoaded", () => {
-            let cursor = 0;
-
-            const resizeEvent = function(e){
-                const isBigger = cursor.pageY > window.innerHeight / 0.66;
-                const isSmaller = cursor.pageY < window.innerHeight / 0.33;
-                
-                if(isBigger)
-                    window.scroll(0, cursor.screenY)
-                else if(isSmaller)
-                    window.scroll(0, cursor.screenY)
-            }
-
-            document.addEventListener("mousemove", e => cursor = e)
-
-            new ResizeObserver(resizeEvent).observe(textarea)
-
             button.onclick = () => {
                 try {
                     eval(textarea.value)
