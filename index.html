@@ -45,6 +45,9 @@
     <script>
         document.addEventListener("DOMContentLoaded", () => {
             const height = window.innerHeight;
+            
+            textarea.value = localStorage.getItem("save");
+
             function isComputer(){
                 const userAgent = navigator.userAgent.toLowerCase();
 
@@ -58,6 +61,10 @@
 
             textarea.addEventListener("focusout", (e) => {
                 button.bottom = "10px";
+            })
+
+            textarea.addEventListener("input", (e) => {
+                localStorage.setItem('save', textarea.value);
             })
             
             button.onclick = () => {
