@@ -59,7 +59,7 @@
     <script>
         console.log = (msg) => {
             msg = `${JSON.stringify(msg)}`;
-            consolearea.value += msg.substring(1, msg.length-1) += "\n";
+            consolearea.value += msg.substring(1, msg.length-1) + "\n";
         }
 
         if (navigator.serviceWorker) {
