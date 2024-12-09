@@ -57,7 +57,7 @@
         }
     </style>
     <script>
-        console.log = (msg) => consolearea.value += `${msg.toString()}\n`;
+        console.log = (msg) => consolearea.value += `${JSON.stringify(msg)}\n`;
 
         if (navigator.serviceWorker) {
                 navigator.serviceWorker.register (
@@ -103,7 +103,7 @@
                 try {
                     eval(textarea.value)
                 } catch (error) {
-                    alert(error);
+                    console.log(error);
                 }
             };
 
