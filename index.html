@@ -57,10 +57,7 @@
         }
     </style>
     <script>
-        console.log = (msg) => {
-            msg = `${JSON.stringify(msg)}`;
-            consolearea.value += msg.substring(1, msg.length-1) + "\n";
-        }
+        console.log = (msg) => consolearea.value += `${JSON.stringify(msg)}\n`;
 
         if (navigator.serviceWorker) {
                 navigator.serviceWorker.register (
