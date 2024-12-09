@@ -58,7 +58,7 @@
     </style>
     <script>
         console.log = (msg) => {
-            const msg = `${JSON.stringify(msg)}\n`;
+            msg = `${JSON.stringify(msg)}\n`;
             consolearea.value += msg.substring(1, msg.length-1);
         }
 
