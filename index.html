@@ -22,10 +22,13 @@
         }
         textarea{
             padding: 2px;
-            height: calc(100% - 60px);
+            height: calc(75%);
             width: 100%;
             max-width: 100%;
             font-size: 16px;
+        }
+        #consolearea{
+            height: calc(25% - 60px);
         }
         textarea:focus{
             outline: none;
@@ -120,8 +123,9 @@
     </script>
 </head>
 <body>
-    <textarea id="textarea" autocorrect="off" spellcheck="false"></textarea>
+    <textarea id="textarea" autocorrect="off" spellcheck="false" resize="false"></textarea>
     <button id="button">Execute</button>
     <button id="button_import"><img src="/js-online/import.svg"></button>
+    <textarea id="consolearea" resize="false"></textarea>
 </body>
 </html>
