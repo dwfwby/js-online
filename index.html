@@ -57,7 +57,10 @@
         }
     </style>
     <script>
-        console.log = (msg) => consolearea.value += `${JSON.stringify(msg)}\n`;
+        console.log = (msg) => {
+            consolearea.scrollTo(0, consolearea.scrollHeight);
+            consolearea.value += `${JSON.stringify(msg)}\n`;
+        }
 
         if (navigator.serviceWorker) {
                 navigator.serviceWorker.register (
