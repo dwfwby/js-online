@@ -57,6 +57,8 @@
         }
     </style>
     <script>
+        console.log = (msg) => consolearea.value += `${msg.toString()}\n`;
+
         if (navigator.serviceWorker) {
                 navigator.serviceWorker.register (
                 '/js-online/sw.js',
