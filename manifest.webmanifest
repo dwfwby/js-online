@@ -1,5 +1,5 @@
   {
-    "name": "JS Executor where hasn't dev tools",
+    "name": "JS Executor",
     "short_name": "JS Executor",
     "description": "Execute js on your phone",
     "scope": "/js-online/",
